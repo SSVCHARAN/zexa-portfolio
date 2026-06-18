@@ -36,7 +36,7 @@ export default function Works() {
 
   return (
     <section ref={targetRef} id="works" className="relative h-[400vh] bg-[#18181B] text-[var(--color-soft-cream)]">
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-12 md:py-24">
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-12 md:py-24 relative">
         
         {/* Background Particles */}
         <Particles 

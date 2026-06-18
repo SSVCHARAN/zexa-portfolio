@@ -9,7 +9,7 @@ import { Particles } from "./magicui/particles";
 
 export default function Contact() {
   return (
-    <footer id="contact" className="relative pt-24 pb-0 px-4 md:px-8 border-t border-[var(--foreground)]/10 overflow-hidden">
+    <footer id="contact" className="relative pt-24 pb-0 px-4 md:px-8 border-t border-[var(--foreground)]/10 overflow-hidden bg-[#18181B] text-[var(--color-soft-cream)]">
       <Particles 
         className="absolute inset-0 z-0 pointer-events-none"
         quantity={200}
@@ -78,22 +78,22 @@ export default function Contact() {
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-[var(--foreground)]/70 pl-1">Name</label>
-                      <input type="text" id="name" className="w-full bg-transparent dark:bg-black/20 border border-[var(--foreground)]/20 rounded-xl px-4 py-3 text-[var(--foreground)] placeholder:text-[var(--foreground)]/40 focus:outline-none focus:ring-2 focus:ring-[var(--color-sage-green)] transition-shadow" placeholder="John Doe" />
+                      <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-white/70 pl-1">Name</label>
+                      <input type="text" id="name" className="w-full bg-transparent border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[var(--color-sage-green)] transition-shadow" placeholder="John Doe" />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-[var(--foreground)]/70 pl-1">Email</label>
-                      <input type="email" id="email" className="w-full bg-transparent dark:bg-black/20 border border-[var(--foreground)]/20 rounded-xl px-4 py-3 text-[var(--foreground)] placeholder:text-[var(--foreground)]/40 focus:outline-none focus:ring-2 focus:ring-[var(--color-sage-green)] transition-shadow" placeholder="john@example.com" />
+                      <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-white/70 pl-1">Email</label>
+                      <input type="email" id="email" className="w-full bg-transparent border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[var(--color-sage-green)] transition-shadow" placeholder="john@example.com" />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
-                    <label htmlFor="service" className="text-xs font-bold uppercase tracking-widest text-[var(--foreground)]/70 pl-1">Interested In</label>
-                    <select id="service" className="w-full bg-transparent dark:bg-black/20 border border-[var(--foreground)]/20 rounded-xl px-4 py-3 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-sage-green)] transition-shadow appearance-none">
-                      <option className="bg-[var(--background)] text-[var(--foreground)]">Basic Website</option>
-                      <option className="bg-[var(--background)] text-[var(--foreground)]">Standard Package</option>
-                      <option className="bg-[var(--background)] text-[var(--foreground)]">Premium Web App</option>
-                      <option className="bg-[var(--background)] text-[var(--foreground)]">Other / Custom</option>
+                    <label htmlFor="service" className="text-xs font-bold uppercase tracking-widest text-white/70 pl-1">Interested In</label>
+                    <select id="service" className="w-full bg-transparent border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-sage-green)] transition-shadow appearance-none">
+                      <option className="bg-[#18181B] text-white">Basic Website</option>
+                      <option className="bg-[#18181B] text-white">Standard Package</option>
+                      <option className="bg-[#18181B] text-white">Premium Web App</option>
+                      <option className="bg-[#18181B] text-white">Other / Custom</option>
                     </select>
                   </div>
 

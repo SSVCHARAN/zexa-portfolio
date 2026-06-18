@@ -107,8 +107,12 @@ export const Particles: React.FC<ParticlesProps> = ({
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d")
     }
-    initCanvasRef.current()
-    animateRef.current()
+    
+    // Defer initialization to ensure DOM is fully painted with styles in production
+    setTimeout(() => {
+      initCanvasRef.current()
+      animateRef.current()
+    }, 100)
 
     const handleResize = () => {
       if (resizeTimeout.current) {
