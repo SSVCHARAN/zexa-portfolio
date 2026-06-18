@@ -14,11 +14,8 @@ const services = [
     price: "Starting at $999",
     description: "Perfect for small businesses establishing their online presence.",
     features: [
-      "Custom Landing Page",
-      "Mobile Responsive Design",
-      "Basic SEO Setup",
-      "Contact Form Integration",
-      "1 Revision Round",
+      { text: "Custom UI/UX Design", glowing: false },
+      { text: "Mobile Responsive Build", glowing: false },
     ],
     highlighted: false,
   },
@@ -27,11 +24,9 @@ const services = [
     price: "Starting at $2,499",
     description: "Ideal for growing brands needing multi-page architecture.",
     features: [
-      "Up to 5 Custom Pages",
-      "Advanced Animations & Interactions",
-      "CMS Integration",
-      "Performance Optimization",
-      "3 Revision Rounds",
+      { text: "Everything in Basic", glowing: false },
+      { text: "Advanced CMS Integration", glowing: false },
+      { text: "Cinematic Scroll Physics", glowing: true },
     ],
     highlighted: true,
   },
@@ -40,11 +35,11 @@ const services = [
     price: "Custom Quote",
     description: "Comprehensive digital experience for enterprise clients.",
     features: [
-      "Unlimited Custom Pages",
-      "E-commerce Functionality",
-      "Custom Web Apps (React/Next.js)",
-      "Premium 3D/Canvas Elements",
-      "Dedicated Support & Maintenance",
+      { text: "Everything in Standard", glowing: false },
+      { text: "Priority 24/7 Support", glowing: false },
+      { text: "Interactive 3D Elements", glowing: true },
+      { text: "AI-Powered Automation", glowing: true },
+      { text: "Custom WebGL Shaders", glowing: true },
     ],
     highlighted: false,
   },
@@ -130,13 +125,13 @@ export default function Services() {
                   </div>
 
                   <ul className="space-y-4 mb-8 flex-grow relative z-10 text-left w-full">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3 text-sm font-medium">
-                        <div className="mt-0.5 rounded-full p-1 bg-[var(--foreground)]/10 text-[var(--foreground)]">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm font-medium">
+                        <div className={`mt-0.5 rounded-full p-1 ${feature.glowing ? 'bg-[var(--color-sage-green)]/20 text-[var(--color-sage-green)] shadow-[0_0_12px_rgba(143,175,154,0.6)]' : 'bg-[var(--foreground)]/10 text-[var(--foreground)]'}`}>
                           <Check className="w-3 h-3" />
                         </div>
-                        <span className="text-[var(--foreground)]/80">
-                          {feature}
+                        <span className={`${feature.glowing ? 'text-[var(--color-sage-green)] font-bold drop-shadow-[0_0_10px_rgba(143,175,154,0.8)]' : 'text-[var(--foreground)]/80'}`}>
+                          {feature.text}
                         </span>
                       </li>
                     ))}
