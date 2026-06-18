@@ -63,7 +63,6 @@ export default function Services() {
         quantity={250}
         ease={80}
         color="#8FAF9A"
-        size={1.5}
         refresh
       />
 

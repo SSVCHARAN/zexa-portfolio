@@ -44,7 +44,6 @@ export default function Works() {
           quantity={300}
           ease={80}
           color="#8FAF9A"
-          size={1.5}
           refresh
         />
 

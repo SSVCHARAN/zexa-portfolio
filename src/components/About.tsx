@@ -23,7 +23,6 @@ export default function About() {
         quantity={200}
         ease={80}
         color="#E07A5F"
-        size={1.5}
         refresh
       />
 

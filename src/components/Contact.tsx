@@ -15,7 +15,6 @@ export default function Contact() {
         quantity={200}
         ease={80}
         color="#8FAF9A"
-        size={1.5}
         refresh
       />
       <div className="max-w-7xl mx-auto relative z-10">
