@@ -20,7 +20,7 @@ export default function About() {
       {/* Background Particles */}
       <Particles 
         className="absolute inset-0 z-0 pointer-events-none"
-        quantity={200}
+        quantity={50}
         ease={80}
         color="#E07A5F"
         refresh

@@ -60,7 +60,7 @@ export default function Services() {
       {/* Background Particles */}
       <Particles 
         className="absolute inset-0 z-0 pointer-events-none"
-        quantity={250}
+        quantity={80}
         ease={80}
         color="#8FAF9A"
         refresh

@@ -40,8 +40,8 @@ export default function Works() {
         
         {/* Background Particles */}
         <Particles 
-          className="absolute inset-0 z-0 pointer-events-none"
-          quantity={300}
+          className="absolute inset-0 z-0 pointer-events-none hidden md:block"
+          quantity={100}
           ease={80}
           color="#8FAF9A"
           refresh
