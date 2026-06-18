@@ -5,6 +5,7 @@ import { CheckCircle2 } from "lucide-react";
 import { useRef } from "react";
 import { TextRevealByProgress } from "./magicui/text-reveal";
 import { Highlighter } from "./magicui/highlighter";
+import { Particles } from "./magicui/particles";
 
 export default function About() {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -15,6 +16,16 @@ export default function About() {
 
   return (
     <section ref={targetRef} id="about" className="py-24 relative overflow-hidden bg-[var(--color-deep-olive)]">
+      
+      {/* Background Particles */}
+      <Particles 
+        className="absolute inset-0 z-0 pointer-events-none"
+        quantity={80}
+        ease={80}
+        color="#E07A5F"
+        refresh
+      />
+
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 text-[var(--color-soft-cream)]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           

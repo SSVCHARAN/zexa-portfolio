@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { TextRevealByProgress } from "./magicui/text-reveal";
+import { Particles } from "./magicui/particles";
 
 const projects = [
   { name: "Zexa Interiors", url: "https://zexa-interiors.vercel.app/", category: "Interior Design", image: "/project_interior.png" },
@@ -34,10 +35,19 @@ export default function Works() {
   const x = useTransform(scrollYProgress, (pos) => `calc(-${pos * 100}% + ${pos * 100}vw)`);
 
   return (
-    <section ref={targetRef} id="works" className="relative h-[400vh] bg-transparent">
+    <section ref={targetRef} id="works" className="relative h-[400vh] bg-[#18181B] text-[var(--color-soft-cream)]">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-12 md:py-24">
         
-        <div className="max-w-7xl mx-auto px-4 md:px-8 w-full mb-8 md:mb-12 shrink-0">
+        {/* Background Particles */}
+        <Particles 
+          className="absolute inset-0 z-0 pointer-events-none"
+          quantity={150}
+          ease={80}
+          color="#8FAF9A"
+          refresh
+        />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8 w-full mb-8 md:mb-12 shrink-0 relative z-10">
           <motion.h2 
             ref={headerRef}
             initial={{ opacity: 0, y: 20 }}
