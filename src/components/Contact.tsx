@@ -12,9 +12,10 @@ export default function Contact() {
     <footer id="contact" className="relative pt-24 pb-0 px-4 md:px-8 border-t border-[var(--foreground)]/10 overflow-hidden">
       <Particles 
         className="absolute inset-0 z-0 pointer-events-none"
-        quantity={100}
+        quantity={200}
         ease={80}
         color="#8FAF9A"
+        size={1.5}
         refresh
       />
       <div className="max-w-7xl mx-auto relative z-10">

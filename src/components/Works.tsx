@@ -41,9 +41,10 @@ export default function Works() {
         {/* Background Particles */}
         <Particles 
           className="absolute inset-0 z-0 pointer-events-none"
-          quantity={150}
+          quantity={300}
           ease={80}
           color="#8FAF9A"
+          size={1.5}
           refresh
         />
 
@@ -102,7 +103,7 @@ export default function Works() {
                   {project.name}
                 </h3>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </motion.div>
 
