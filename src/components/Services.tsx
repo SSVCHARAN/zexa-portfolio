@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { ShineBorder } from "./magicui/shine-border";
 import { GlareHover } from "./magicui/glare-hover";
 import { TextRevealByProgress } from "./magicui/text-reveal";
+import { Particles } from "./magicui/particles";
 
 const services = [
   {
@@ -57,11 +58,21 @@ export default function Services() {
   });
 
   return (
-    <section id="services" className="py-24 px-4 md:px-8 max-w-7xl mx-auto relative">
+    <section id="services" className="py-24 px-4 md:px-8 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-[var(--color-sage-green-light)]/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-      <div className="text-center mb-16">
+      {/* Background Particles */}
+      <Particles 
+        className="absolute inset-0 z-0 pointer-events-none"
+        quantity={120}
+        ease={80}
+        color="#ffffff"
+        refresh
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-16">
         <motion.h2 
           ref={headerRef}
           initial={{ opacity: 0, y: 20 }}
@@ -144,6 +155,7 @@ export default function Services() {
             })()}
           </motion.div>
         ))}
+        </div>
       </div>
     </section>
   );

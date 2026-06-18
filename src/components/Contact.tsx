@@ -5,11 +5,19 @@ import { Send } from "lucide-react";
 import { LineShadowText } from "./magicui/line-shadow-text";
 import { GlareHover } from "./magicui/glare-hover";
 import { RainbowButton } from "./magicui/rainbow-button";
+import { Particles } from "./magicui/particles";
 
 export default function Contact() {
   return (
     <footer id="contact" className="relative pt-24 pb-0 px-4 md:px-8 border-t border-[var(--foreground)]/10 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+      <Particles 
+        className="absolute inset-0 z-0 pointer-events-none"
+        quantity={100}
+        ease={80}
+        color="#8FAF9A"
+        refresh
+      />
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
           
           {/* Contact Info */}
