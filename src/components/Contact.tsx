@@ -65,7 +65,16 @@ export default function Contact() {
           >
             <GlareHover className="w-full rounded-3xl" width="100%" color="#8FAF9A" opacity={0.12} duration={650}>
               <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-[var(--foreground)]/10 shadow-xl w-full">
-                <form className="space-y-6">
+                <form 
+                  className="space-y-6"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const name = (document.getElementById("name") as HTMLInputElement).value;
+                    const email = (document.getElementById("email") as HTMLInputElement).value;
+                    const message = (document.getElementById("message") as HTMLTextAreaElement).value;
+                    window.location.href = `mailto:zexabuilds@gmail.com?subject=New Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nContact Email: ' + email)}`;
+                  }}
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-[var(--foreground)]/70 pl-1">Name</label>
@@ -92,7 +101,7 @@ export default function Contact() {
                     <textarea id="message" rows={4} className="w-full bg-transparent dark:bg-black/20 border border-[var(--foreground)]/20 rounded-xl px-4 py-3 text-[var(--foreground)] placeholder:text-[var(--foreground)]/40 focus:outline-none focus:ring-2 focus:ring-[var(--color-sage-green)] transition-shadow resize-none" placeholder="Tell us about your project..."></textarea>
                   </div>
 
-                  <RainbowButton type="button" className="w-full py-4 text-[var(--background)] dark:text-[#18181B] font-bold text-base hover:opacity-90 transition-opacity">
+                  <RainbowButton type="submit" className="w-full py-4 text-[var(--background)] dark:text-[#18181B] font-bold text-base hover:opacity-90 transition-opacity">
                     Send Message <Send className="w-4 h-4" />
                   </RainbowButton>
                 </form>

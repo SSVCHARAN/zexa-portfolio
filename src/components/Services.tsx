@@ -141,7 +141,10 @@ export default function Services() {
                     ))}
                   </ul>
 
-                  <button className="relative z-10 w-full py-4 rounded-xl font-bold transition-all duration-300 bg-transparent border border-[var(--foreground)]/20 hover:bg-[var(--foreground)] hover:text-[var(--background)]">
+                  <button 
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}
+                    className="relative z-10 w-full py-4 rounded-xl font-bold transition-all duration-300 bg-transparent border border-[var(--foreground)]/20 hover:bg-[var(--foreground)] hover:text-[var(--background)]"
+                  >
                     Get Started
                   </button>
                 </div>

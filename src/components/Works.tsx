@@ -72,16 +72,15 @@ export default function Works() {
 
         <motion.div style={{ x }} className="flex gap-6 md:gap-8 px-4 md:px-8 w-max">
           {projects.map((project, index) => (
-            <motion.a
+            <motion.div
               key={project.name}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => window.open(project.url, '_blank')}
+              whileHover={{ scale: 0.98 }}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "100px" }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="group relative block overflow-hidden rounded-2xl bg-[var(--foreground)]/5 w-[85vw] md:w-[40vw] lg:w-[30vw] aspect-[4/3] shrink-0"
+              className="group relative block overflow-hidden rounded-2xl bg-[var(--foreground)]/5 w-[85vw] md:w-[40vw] lg:w-[30vw] aspect-[4/3] shrink-0 cursor-pointer"
             >
               <div className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105">
                 <Image
