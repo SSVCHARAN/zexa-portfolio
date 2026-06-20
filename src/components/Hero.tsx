@@ -2,29 +2,43 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { Particles } from "./magicui/particles";
 
 export default function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 300]);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <motion.div style={{ y }} className="absolute -inset-y-[30%] inset-x-0 z-0">
-        <Image
-          src="/hero-bg.jpg"
-          alt="Zexa Designs Hero"
-          fill
-          priority
-          quality={100}
-          unoptimized
-          className="object-cover object-center opacity-60"
-          sizes="100vw"
-        />
-      </motion.div>
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[var(--background)]">
+      {/* Modern Abstract Agency Background Image */}
+      <div className="absolute inset-0 z-0">
+        <motion.div style={{ y }} className="absolute -inset-y-[15%] inset-x-0 z-0 pointer-events-none">
+          <Image
+            src="/hero-bg.jpg"
+            alt="Zexa Designs Hero"
+            fill
+            priority
+            unoptimized
+            quality={100}
+            className="object-cover object-center opacity-[0.35]"
+            sizes="100vw"
+          />
+          {/* Subtle glowing orbs overlaid on the image for extra depth */}
+          <div className="absolute top-1/4 right-[-5%] w-[40vw] h-[40vw] bg-[#8FAF9A] opacity-[0.1] blur-[100px] rounded-full mix-blend-screen"></div>
+          <div className="absolute bottom-1/4 left-[-5%] w-[50vw] h-[50vw] bg-[#ffffff] opacity-[0.05] blur-[120px] rounded-full mix-blend-screen"></div>
+        </motion.div>
+      </div>
+
+      <Particles 
+        className="absolute inset-0 z-0 pointer-events-none opacity-40"
+        quantity={40}
+        ease={80}
+        color="#8FAF9A"
+        refresh
+      />
 
       {/* Gradient Overlay for blending */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-[var(--background)]/20 to-[var(--background)]"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-[var(--background)]/10 to-[var(--background)] pointer-events-none"></div>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto">
@@ -32,13 +46,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="glass-panel p-8 md:p-16 rounded-3xl border border-white/20 backdrop-blur-xl bg-white/10 shadow-2xl"
+          className="glass-panel p-8 md:p-16 rounded-3xl border border-white/5 backdrop-blur-md bg-white/[0.02] shadow-2xl"
         >
           <motion.h1
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight text-[var(--foreground)] mb-6"
+            className="text-5xl md:text-7xl font-bold tracking-tight text-[var(--foreground)] mb-6 drop-shadow-sm"
           >
             Zexa Designs
           </motion.h1>

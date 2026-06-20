@@ -48,18 +48,18 @@ export default function About() {
             
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="text-4xl font-light text-[var(--color-sage-green-light)]">10+</div>
+                <div className="text-4xl font-light text-[var(--color-sage-green-light)]">9</div>
                 <div>
-                  <h4 className="font-bold text-xl mb-1">Years Experience</h4>
-                  <p className="text-sm text-white/60">Across web design and development</p>
+                  <h4 className="font-bold text-xl mb-1">Premium Showcases</h4>
+                  <p className="text-sm text-white/60">Meticulously crafted digital experiences</p>
                 </div>
               </div>
               <div className="w-full h-[1px] bg-white/10" />
               <div className="flex gap-4">
-                <div className="text-4xl font-light text-[var(--color-sage-green-light)]">50+</div>
+                <div className="text-4xl font-light text-[var(--color-sage-green-light)]">100%</div>
                 <div>
-                  <h4 className="font-bold text-xl mb-1">Projects Delivered</h4>
-                  <p className="text-sm text-white/60">For clients around the globe</p>
+                  <h4 className="font-bold text-xl mb-1">Custom Architecture</h4>
+                  <p className="text-sm text-white/60">Zero generic templates used</p>
                 </div>
               </div>
             </div>
