@@ -18,19 +18,18 @@ export default function Hero() {
             alt="Zexa Designs Hero"
             fill
             priority
-            unoptimized
             quality={100}
             className="object-cover object-center opacity-[0.35]"
             sizes="100vw"
           />
           {/* Subtle glowing orbs overlaid on the image for extra depth */}
-          <div className="absolute top-1/4 right-[-5%] w-[40vw] h-[40vw] bg-[#8FAF9A] opacity-[0.1] blur-[100px] rounded-full mix-blend-screen"></div>
-          <div className="absolute bottom-1/4 left-[-5%] w-[50vw] h-[50vw] bg-[#ffffff] opacity-[0.05] blur-[120px] rounded-full mix-blend-screen"></div>
+          <div className="absolute top-1/4 right-[-5%] w-[40vw] h-[40vw] bg-[#8FAF9A] opacity-[0.1] blur-[50px] md:blur-[100px] rounded-full mix-blend-screen transform-gpu"></div>
+          <div className="absolute bottom-1/4 left-[-5%] w-[50vw] h-[50vw] bg-[#ffffff] opacity-[0.05] blur-[60px] md:blur-[120px] rounded-full mix-blend-screen transform-gpu"></div>
         </motion.div>
       </div>
 
       <Particles 
-        className="absolute inset-0 z-0 pointer-events-none opacity-40"
+        className="absolute inset-0 z-0 pointer-events-none opacity-40 hidden md:block"
         quantity={40}
         ease={80}
         color="#8FAF9A"

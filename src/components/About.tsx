@@ -19,7 +19,7 @@ export default function About() {
       
       {/* Background Particles */}
       <Particles 
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none hidden md:block"
         quantity={50}
         ease={80}
         color="#E07A5F"

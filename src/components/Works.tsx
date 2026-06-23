@@ -78,7 +78,6 @@ export default function Works() {
                     src={project.image}
                     alt={project.name}
                     fill
-                    unoptimized
                     className={`object-cover ${project.position} opacity-80 group-hover:opacity-100 transition-opacity duration-500`}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />

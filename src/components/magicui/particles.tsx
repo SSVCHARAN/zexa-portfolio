@@ -6,6 +6,7 @@ import React, {
   useState,
   type ComponentPropsWithoutRef,
 } from "react"
+import { useInView } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -102,6 +103,8 @@ export const Particles: React.FC<ParticlesProps> = ({
   const initCanvasRef = useRef<() => void>(() => {})
   const onMouseMoveRef = useRef<() => void>(() => {})
   const animateRef = useRef<() => void>(() => {})
+
+  const isInView = useInView(canvasContainerRef)
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -259,6 +262,10 @@ export const Particles: React.FC<ParticlesProps> = ({
   }
 
   const animate = () => {
+    if (!isInView) {
+      rafID.current = window.requestAnimationFrame(animateRef.current)
+      return
+    }
     clearContext()
     circles.current.forEach((circle: Circle, i: number) => {
       // Handle the alpha value
