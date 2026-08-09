@@ -154,6 +154,8 @@ export default function Works() {
 
   const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 4);
 
+  const currentActiveRef = useRef(0);
+
   useEffect(() => {
     if (shouldReduceMotion || typeof window === "undefined") return;
 
@@ -164,16 +166,26 @@ export default function Works() {
       cardElements.forEach((card, i) => {
         ScrollTrigger.create({
           trigger: card,
-          start: "top 25%",
+          start: "top 30%",
           end: "bottom top",
-          onEnter: () => setActiveCardIndex(i),
-          onEnterBack: () => setActiveCardIndex(i),
+          onEnter: () => {
+            if (currentActiveRef.current !== i) {
+              currentActiveRef.current = i;
+              setActiveCardIndex(i);
+            }
+          },
+          onEnterBack: () => {
+            if (currentActiveRef.current !== i) {
+              currentActiveRef.current = i;
+              setActiveCardIndex(i);
+            }
+          },
         });
       });
     }, containerRef);
 
     return () => ctx.revert();
-  }, [filteredProjects, shouldReduceMotion]);
+  }, [displayedProjects, shouldReduceMotion]);
 
   return (
     <section 
@@ -283,7 +295,7 @@ export default function Works() {
                       ? { duration: 0.1 }
                       : { type: "spring", stiffness: 280, damping: 22 }
                   }
-                  className="sticky rounded-[2.5rem] border border-white/15 bg-[#1D1D22]/98 backdrop-blur-2xl shadow-[0_-12px_45px_rgba(0,0,0,0.7)] transition-all duration-300 overflow-hidden group cursor-pointer"
+                  className="sticky rounded-[2.5rem] border border-white/15 bg-[#1B1B20] shadow-[0_-12px_45px_rgba(0,0,0,0.85)] transition-all duration-300 overflow-hidden group cursor-pointer transform-gpu will-change-transform"
                   style={{
                     top: `${stickyTopPx}px`,
                     zIndex: index + 10,
