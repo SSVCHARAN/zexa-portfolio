@@ -67,7 +67,7 @@ export function KineticCursor() {
   const { isHovered, isTextHovered } = hoverState;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden hidden md:block mix-blend-difference">
+    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden hidden md:block mix-blend-difference">
       {/* Precision Optical Magnifying Lens Ring */}
       <motion.div
         style={{

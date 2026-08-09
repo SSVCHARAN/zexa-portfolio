@@ -36,7 +36,7 @@ export default function Navbar() {
           ? { duration: 0.1 }
           : { type: "spring", stiffness: 280, damping: 22 }
       }
-      className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 md:pt-6 pointer-events-none"
+      className="fixed top-0 left-0 right-0 z-40 px-4 pt-4 md:pt-6 pointer-events-none"
     >
       <div
         className={`max-w-5xl mx-auto pointer-events-auto rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
