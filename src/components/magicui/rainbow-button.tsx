@@ -1,7 +1,7 @@
 import React from "react"
 import { cn } from "@/lib/utils"
 
-export interface RainbowButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+export type RainbowButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const RainbowButton = React.forwardRef<HTMLButtonElement, RainbowButtonProps>(
   ({ className, children, ...props }, ref) => {
