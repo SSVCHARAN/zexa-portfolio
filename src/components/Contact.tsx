@@ -8,6 +8,8 @@ import { RainbowButton } from "./magicui/rainbow-button";
 import { Particles } from "./magicui/particles";
 import { Magnetic } from "./magicui/magnetic";
 
+import { sound } from "@/lib/sound";
+
 export default function Contact() {
   const shouldReduceMotion = useReducedMotion();
 
@@ -37,17 +39,17 @@ export default function Contact() {
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">Email</h4>
                 <Magnetic strength={0.2} className="inline-block">
-                  <a href="mailto:zexabuilds@gmail.com" className="text-xl md:text-2xl font-medium text-white hover:text-[#8FAF9A] transition-colors">zexabuilds@gmail.com</a>
+                  <a href="mailto:zexabuilds@gmail.com" onMouseEnter={() => sound.playHover()} className="text-xl md:text-2xl font-medium text-white hover:text-[#8FAF9A] transition-colors">zexabuilds@gmail.com</a>
                 </Magnetic>
               </div>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">Phone</h4>
                 <div className="flex flex-col gap-1">
                   <Magnetic strength={0.2} className="inline-block">
-                    <a href="tel:+917337036740" className="text-xl md:text-2xl font-medium text-white hover:text-[#8FAF9A] transition-colors">+91 73370 36740</a>
+                    <a href="tel:+917337036740" onMouseEnter={() => sound.playHover()} className="text-xl md:text-2xl font-medium text-white hover:text-[#8FAF9A] transition-colors">+91 73370 36740</a>
                   </Magnetic>
                   <Magnetic strength={0.2} className="inline-block">
-                    <a href="tel:+919666637481" className="text-xl md:text-2xl font-medium text-white hover:text-[#8FAF9A] transition-colors">+91 96666 37481</a>
+                    <a href="tel:+919666637481" onMouseEnter={() => sound.playHover()} className="text-xl md:text-2xl font-medium text-white hover:text-[#8FAF9A] transition-colors">+91 96666 37481</a>
                   </Magnetic>
                 </div>
               </div>
@@ -76,6 +78,7 @@ export default function Contact() {
                   className="space-y-6"
                   onSubmit={(e) => {
                     e.preventDefault();
+                    sound.playSuccess();
                     const name = (document.getElementById("name") as HTMLInputElement).value;
                     const email = (document.getElementById("email") as HTMLInputElement).value;
                     const message = (document.getElementById("message") as HTMLTextAreaElement).value;
