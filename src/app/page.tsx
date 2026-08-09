@@ -12,13 +12,6 @@ export default function Home() {
   return (
     <>
       <KineticCursor />
-      <Particles
-        className="fixed inset-0 z-0 opacity-100 pointer-events-none"
-        quantity={80}
-        ease={60}
-        color="#A07CFE"
-        refresh
-      />
       <Navbar />
       <main className="w-full relative z-10">
         <Hero />
