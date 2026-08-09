@@ -6,6 +6,8 @@ import { Sparkles, Menu, X } from "lucide-react";
 import { Magnetic } from "./magicui/magnetic";
 import { SoundToggle } from "./SoundToggle";
 
+import { sound } from "@/lib/sound";
+
 const navItems = [
   { name: "Works", href: "#works" },
   { name: "Services", href: "#services" },
@@ -50,6 +52,8 @@ export default function Navbar() {
           <Magnetic strength={0.25}>
             <a
               href="#"
+              onMouseEnter={() => sound.playHover()}
+              onClick={() => sound.playClick()}
               className="flex items-center gap-2 text-xl font-bold tracking-tight text-white group"
             >
               <span className="w-8 h-8 rounded-full bg-[#8FAF9A]/20 border border-[#8FAF9A]/40 flex items-center justify-center text-[#8FAF9A] group-hover:scale-110 group-hover:bg-[#8FAF9A] group-hover:text-[#18181B] transition-all duration-300">
@@ -67,7 +71,11 @@ export default function Navbar() {
               <Magnetic key={item.name} strength={0.2}>
                 <a
                   href={item.href}
-                  onClick={() => setActiveTab(item.name)}
+                  onMouseEnter={() => sound.playHover()}
+                  onClick={() => {
+                    sound.playTabSwitch();
+                    setActiveTab(item.name);
+                  }}
                   className="relative px-5 py-2 rounded-full text-neutral-300 hover:text-white transition-colors duration-200 block z-10"
                 >
                   {activeTab === item.name && (
@@ -93,6 +101,8 @@ export default function Navbar() {
             <Magnetic strength={0.3}>
               <a
                 href="#contact"
+                onMouseEnter={() => sound.playHover()}
+                onClick={() => sound.playSparkle()}
                 className="relative group inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#8FAF9A] text-[#18181B] font-bold text-sm hover:bg-[#a3c4ae] transition-all duration-300 shadow-[0_0_20px_rgba(143,175,154,0.3)]"
               >
                 <Sparkles className="w-3.5 h-3.5 fill-current" />
@@ -104,7 +114,11 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <Magnetic strength={0.2} className="md:hidden">
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onMouseEnter={() => sound.playHover()}
+              onClick={() => {
+                sound.playClick();
+                setMobileMenuOpen(!mobileMenuOpen);
+              }}
               className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
               aria-label="Toggle Menu"
             >

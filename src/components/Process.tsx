@@ -49,6 +49,8 @@ const steps = [
   },
 ];
 
+import { sound } from "@/lib/sound";
+
 export default function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
@@ -208,6 +210,8 @@ export default function Process() {
           <Magnetic strength={0.3} className="inline-block">
             <a
               href="#contact"
+              onMouseEnter={() => sound.playHover()}
+              onClick={() => sound.playSparkle()}
               className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-[#8FAF9A] text-[#0A0A0E] font-bold text-base hover:bg-[#a3c4ae] transition-all shadow-[0_0_30px_rgba(143,175,154,0.3)]"
             >
               <span>Initiate Stage 01 Discovery</span>

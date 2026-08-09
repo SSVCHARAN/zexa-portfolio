@@ -8,6 +8,8 @@ import { Magnetic } from "./magicui/magnetic";
 import Hero3DCanvas from "./Hero3DCanvas";
 import HeroBackgroundCanvas from "./HeroBackgroundCanvas";
 
+import { sound } from "@/lib/sound";
+
 export default function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 220]);
@@ -122,6 +124,8 @@ export default function Hero() {
             <Magnetic strength={0.4}>
               <a
                 href="#works"
+                onMouseEnter={() => sound.playHover()}
+                onClick={() => sound.playSparkle()}
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#8FAF9A] text-[#0A0A0E] font-bold text-base hover:bg-[#a3c4ae] transition-all duration-300 shadow-[0_0_30px_rgba(143,175,154,0.3)] hover:shadow-[0_0_40px_rgba(143,175,154,0.5)]"
                 data-cursor="EXPLORE"
               >
@@ -134,6 +138,8 @@ export default function Hero() {
             <Magnetic strength={0.3}>
               <a
                 href="#services"
+                onMouseEnter={() => sound.playHover()}
+                onClick={() => sound.playTabSwitch()}
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-white font-semibold text-base border border-white/15 backdrop-blur-xl hover:border-white/30 transition-all duration-300 shadow-xl shadow-black/40"
                 data-cursor="VIEW"
               >
