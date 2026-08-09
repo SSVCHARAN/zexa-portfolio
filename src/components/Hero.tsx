@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform, useSpring, useMotionValue, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Particles } from "./magicui/particles";
 import { Magnetic } from "./magicui/magnetic";
 import Hero3DCanvas from "./Hero3DCanvas";
@@ -12,9 +12,18 @@ import { sound } from "@/lib/sound";
 
 export default function Hero() {
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, 220]);
-  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+  const y = useTransform(scrollY, [0, 1000], [0, 200]);
+  const opacity = useTransform(scrollY, [300, 1000], [1, 0]);
   const shouldReduceMotion = useReducedMotion();
+
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop, { passive: true });
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
 
   // Interactive mouse spotlight with spring damping
   const mouseX = useMotionValue(0);
@@ -58,7 +67,7 @@ export default function Hero() {
 
       {/* Grid Layout Container */}
       <motion.div
-        style={shouldReduceMotion ? {} : { y, opacity }}
+        style={isDesktop && !shouldReduceMotion ? { y, opacity } : {}}
         className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full my-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center"
       >
         {/* Left Column: Editorial Headline & Actions */}
