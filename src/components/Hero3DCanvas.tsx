@@ -51,7 +51,7 @@ export default function Hero3DCanvas() {
     );
     observer.observe(canvas);
 
-    // Mouse tracking for 3D rotation bias & magnetic energy tendrils
+    // Mouse & Touch tracking for 3D rotation bias & magnetic energy tendrils
     let mouseCanvasX = width / 2;
     let mouseCanvasY = height / 2;
     let targetRotX = 0;
@@ -59,11 +59,11 @@ export default function Hero3DCanvas() {
     let rotX = 0;
     let rotY = 0;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const updatePointerPosition = (clientX: number, clientY: number) => {
       if (!isVisibleOnScreen) return;
       const rect = canvas.getBoundingClientRect();
-      mouseCanvasX = e.clientX - rect.left;
-      mouseCanvasY = e.clientY - rect.top;
+      mouseCanvasX = clientX - rect.left;
+      mouseCanvasY = clientY - rect.top;
 
       const cx = width / 2;
       const cy = height / 2;
@@ -71,18 +71,32 @@ export default function Hero3DCanvas() {
       const ny = (mouseCanvasY - cy) / cy;
 
       isHovering = mouseCanvasX >= 0 && mouseCanvasX <= width && mouseCanvasY >= 0 && mouseCanvasY <= height;
-      targetRotY = nx * 1.1;
-      targetRotX = -ny * 1.1;
+      targetRotY = nx * 1.3;
+      targetRotX = -ny * 1.3;
     };
 
-    const handleMouseLeave = () => {
+    const handleMouseMove = (e: MouseEvent) => {
+      updatePointerPosition(e.clientX, e.clientY);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        updatePointerPosition(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
+    const handlePointerLeave = () => {
       isHovering = false;
       targetRotX = 0;
       targetRotY = 0;
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    canvas.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+    canvas.addEventListener("mouseleave", handlePointerLeave, { passive: true });
+    canvas.addEventListener("touchstart", handleTouchMove, { passive: true });
+    canvas.addEventListener("touchmove", handleTouchMove, { passive: true });
+    canvas.addEventListener("touchend", handlePointerLeave, { passive: true });
+    canvas.addEventListener("touchcancel", handlePointerLeave, { passive: true });
 
     // 3D Icosahedron Vertices (Golden ratio phi)
     const phi = (1 + Math.sqrt(5)) / 2;
@@ -170,17 +184,17 @@ export default function Hero3DCanvas() {
         ctx.stroke();
       });
 
-      // Draw Vertices with glowing energy halos & cursor tendrils
+      // Draw Vertices with glowing energy halos & cursor/fingertip tendrils
       projected.forEach((p) => {
         const alpha = Math.max(0.25, Math.min(1, (p.z + scale) / (scale * 2)));
 
-        // Magnetic Energy Connector Lines to Mouse Cursor when hovering
+        // Magnetic Energy Connector Lines to Mouse Cursor / Touch Fingertip
         if (isHovering) {
           const dx = mouseCanvasX - p.x;
           const dy = mouseCanvasY - p.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 140) {
-            const tendrilAlpha = (1 - dist / 140) * 0.8;
+          if (dist < 150) {
+            const tendrilAlpha = (1 - dist / 150) * 0.85;
             const tendrilGrad = ctx.createLinearGradient(p.x, p.y, mouseCanvasX, mouseCanvasY);
             tendrilGrad.addColorStop(0, `rgba(143, 175, 154, ${tendrilAlpha})`);
             tendrilGrad.addColorStop(1, `rgba(160, 124, 254, ${tendrilAlpha * 0.6})`);
@@ -189,7 +203,7 @@ export default function Hero3DCanvas() {
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouseCanvasX, mouseCanvasY);
             ctx.strokeStyle = tendrilGrad;
-            ctx.lineWidth = 1.2;
+            ctx.lineWidth = 1.3;
             ctx.stroke();
           }
         }
@@ -235,13 +249,17 @@ export default function Hero3DCanvas() {
       observer.disconnect();
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
-      canvas.removeEventListener("mouseleave", handleMouseLeave);
+      canvas.removeEventListener("mouseleave", handlePointerLeave);
+      canvas.removeEventListener("touchstart", handleTouchMove);
+      canvas.removeEventListener("touchmove", handleTouchMove);
+      canvas.removeEventListener("touchend", handlePointerLeave);
+      canvas.removeEventListener("touchcancel", handlePointerLeave);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, [shouldReduceMotion]);
 
   return (
-    <div className="w-full h-full min-h-[380px] sm:min-h-[440px] relative flex items-center justify-center pointer-events-auto">
+    <div className="w-full h-full min-h-[320px] sm:min-h-[420px] lg:min-h-[500px] relative flex items-center justify-center pointer-events-auto touch-none">
       <canvas ref={canvasRef} className="w-full h-full block cursor-crosshair" />
     </div>
   );
