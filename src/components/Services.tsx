@@ -143,8 +143,10 @@ function SpotlightCard({ service, billingMode }: { service: ServiceTier; billing
           {service.description}
         </p>
 
-        <div className="flex items-baseline gap-2">
-          <span className="text-4xl sm:text-5xl font-black text-white">{price}</span>
+        <div className="flex items-center gap-2">
+          <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono font-semibold uppercase tracking-widest text-[#8FAF9A]">
+            Custom Scope
+          </span>
         </div>
       </div>
 
